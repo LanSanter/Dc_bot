@@ -1,5 +1,7 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
+const API_KEY = process.env.API_KEY;
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -11,7 +13,7 @@ const client = new Client({
 const { Configuration, OpenAIApi, } = require('openai');
 
 const configuration = new Configuration({
-  apiKey: process.env.API_KEY,
+  apiKey: API_KEY,
 });
 
 const openAI = new OpenAIApi(configuration);
@@ -124,4 +126,4 @@ client.on('messageCreate', async message => {
 });
 
 // Log in to the Discord client using your bot's token
-client.login(process.env.BOT_TOKEN);
+client.login(BOT_TOKEN);
