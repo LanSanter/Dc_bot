@@ -140,6 +140,9 @@ const chat = (req, res, next) => {
   });
   next();
 };
+app.get('/', function(req, res) {
+  res.send('Bot activated');
+});
 
 app.use(ready);
 app.use(test);
@@ -149,9 +152,6 @@ app.use(clear);
 app.use(shutdown);
 app.use(chat);
 
-app.get('/', function(req, res) {
-  res.send('Bot activated');
-});
 
 // Log in to the Discord client using your bot's token
 client.login(process.env.BOT_TOKEN);
