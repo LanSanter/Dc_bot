@@ -2,21 +2,16 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "index.js": "^0.0.3",
     "node-fetch": "^3.3.0",
-    "express": "^4.18.2",
     "openai": "^3.2.1"
   },
-  "name": "administrator",
+  "name": "chat.js",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node chat.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lan_Santer/Dc_bot.git"
   },
   "keywords": [],
   "author": "",
