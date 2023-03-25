@@ -117,7 +117,7 @@ const chat = (req, res, next) => {
     if (message.content.slice(0, 10).includes('暉')) {
       messages.push({
         role: "user",
-        content: `${message.author.username}` + message.content,
+        content: `${message.author.username}:` + message.content,
       });
     }
     
