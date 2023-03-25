@@ -149,10 +149,10 @@ app.use(clear);
 app.use(shutdown);
 app.use(chat);
 
-/*app.get('/', function(req, res) {
-  // your code to handle GET request on '/'
-});*/
-//處理http路由，暫未需要
+app.get('/', function(req, res) {
+  res.send('Bot activated');
+});
+
 // Log in to the Discord client using your bot's token
 client.login(process.env.BOT_TOKEN);
 
