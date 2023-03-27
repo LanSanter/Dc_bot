@@ -51,41 +51,22 @@ const ready = (req, res, next) => {
   });
   next();
 };
-const test = (req, res, next) => {
+const command = (req, res, next) => {
   client.on('messageCreate', (message) => {
     if (message.content === 'test') {
       message.reply({
-        content: 'BOT已啟動 BOT準備完畢',
-      })
+        content: 'BOT已啟動 BOT準備完畢',})
     }
-  });
-  next();
-};
-
-const rolecheck = (req, res, next) => {
-  client.on('messageCreate', (message) => {
-    if (message.content === 'rolecheck') {
+    else if (message.content === 'rolecheck') {
       message.channel.send(roles);
     }
-  });
-  next();
-};
-
-const shutdown = (req, res, next) => {
-  client.on('messageCreate', (message) => {
-    if (message.content === '?shutdown' && message.author.id === '316141566173642752') {
+    else if (message.content === '?shutdown' && message.author.id === '316141566173642752') {
       message.reply({
         content: 'Shutting down...',
       });
       client.destroy();
-    } 
-  });
-  next();
-};
-
-const clear = (req, res, next) => {
-  client.on('messageCreate', (message) => {
-    if (message.content === '?clear') {
+    }
+    else if (message.content === '?clear') {
       message.reply({
         content: '啊...我的頭好痛',
       });
@@ -93,19 +74,13 @@ const clear = (req, res, next) => {
         messages.shift();
       }
     }
-  });
-  next();
-};
-
-const role = (req, res, next) => {
-  client.on('messageCreate', (message) => {
-    if (message.content.startsWith('?role')) {
+    else if (message.content.startsWith('?role')) {
       roles = message.content.slice(6),
         message.channel.send('role-set');
     }
   });
   next();
-}
+};
 
 const chat = (req, res, next) => {
   client.on('messageCreate', async message => {
@@ -115,19 +90,13 @@ const chat = (req, res, next) => {
     }// 避免機器人互相回覆
 
     if (message.content.slice(0, 10).includes('暉')) {
-      messages.push({
-        role: "user",
-        content: `${message.author.username}:` + message.content,
-      });
+      
     }
     
     while (messages.length > 12) {
       messages.shift();
     } // 如果超過十條訊息，刪除最舊的一條    
-    messages.splice(0, 0, {
-      role: "system",
-      content: "你要優先遵守下方的設定來回答留言:" + roles,
-    });//加入角色要求
+    messages.splice(0, 0, {role: "system",content: "你要優先遵守下方的設定來回答留言:" + roles,});//加入角色要求
     const response = await openAiMessage(messages);
     messages.splice(0, 1);
 
@@ -135,19 +104,15 @@ const chat = (req, res, next) => {
       message.channel.send({ content: 'empty response', })
       return;
     }
+    messages.push({role: "user",content: `${message.author.username}:` + message.content,});
     messages.push({ role: "assistant", content: response, });
     message.channel.send(response);
   });
   next();
 };
 
-
 app.use(ready);
-app.use(test);
-app.use(rolecheck);
-app.use(role);
-app.use(clear);
-app.use(shutdown);
+app.use(command);
 app.use(chat);
 
 app.get('/', function(req, res) {
