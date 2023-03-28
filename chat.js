@@ -85,7 +85,7 @@ const command = (req, res, next) => {
 const chat = (req, res, next) => {
   client.on('messageCreate', async message => {
     console.log('使用者發送的訊息：', message.content);
-    if (/*message.author.bot || */!message.content.slice(0, 10).includes('暉')) {
+    if (message.author.bot || !message.content.slice(0, 10).includes('暉')) {
       return;
     }// 避免機器人互相回覆
     prompt = {role: "user",content: `${message.author.username}:` + message.content,};
