@@ -28,8 +28,9 @@ async function openAiMessage(messages) {
     const completion = await openAI.createChatCompletion({
       model: modelId,
       messages,
-      max_tokens: 1000,
+      max_tokens: 600,
       temperature: 0.6,
+      logit_bias:{34402, 241, 36181, 115, 17358, 237, 163, 107, 226:-80}
     });
 
     return completion.data.choices[0].message.content; // OpenAI 回傳時都會有許多空白，因此要使用 trim 去除前後空白
