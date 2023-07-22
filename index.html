@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>页面标题</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .square {
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+    }
+    .title {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        border: none;
+        text-decoration: none;
+        color: #000;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .rectangle {
+        width: 300px;
+        height: 200px;
+        background-color: #f0f0f0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="square">
+    <img src="https://media.discordapp.net/attachments/1088253899871371284/1088327832779882527/00819-277189643-Illustration_brilliant_beautiful_detailed_dark_wizard_hooded_robe_disheveled_floating_black_short_hair_masterpiece_best.png?width=568&height=695" alt="图片">
+  </div>
+  <h2 class="title">标题</h2>
+  <div class="container">
+    <a href="/page1" class="button">指令介紹</a>
+    <a href="/page2" class="button">跳转到 Page 1</a>
+    <a href="/page3" class="button">跳转到 Page 1</a>
+    <a href="/page4" class="button">跳转到 Page 1</a>
+    <a href="/page5" class="button">跳转到 Page 1</a>
+    <a href="/page6" class="button">跳转到 Page 1</a>
+
+  </div>
+  <div class="rectangle">
+    <p>页面内容</p>
+  </div>
+</body>
+</html>
